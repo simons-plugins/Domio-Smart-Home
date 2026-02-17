@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Home Remote for Indigo</title>
+    <style>
+        :root {
+            --bg: #fafafa;
+            --text: #1a1a2e;
+            --muted: #555;
+            --accent: #5856d6;
+            --card: #fff;
+            --border: #e0e0e0;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1a1a2e;
+                --text: #e8e8f0;
+                --muted: #a0a0b0;
+                --accent: #8a88ff;
+                --card: #24243e;
+                --border: #3a3a5e;
+            }
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+        }
+        h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.25rem;
+        }
+        .subtitle {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            font-size: 1.15rem;
+            margin-top: 1.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        p, li {
+            color: var(--text);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+        ul {
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        li { margin-bottom: 0.35rem; }
+        a { color: var(--accent); }
+        .footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.8rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <p class="subtitle">Home Remote for Indigo &mdash; Last updated: 17 February 2026</p>
+
+        <h2>Overview</h2>
+        <p>Home Remote for Indigo is an independent, community-built iOS app for controlling Indigo home automation systems. Your privacy is important to us. This policy explains what data the app handles and how.</p>
+
+        <h2>Data We Do Not Collect</h2>
+        <p>The app does <strong>not</strong> collect, transmit, or store any personal data on external servers. Specifically:</p>
+        <ul>
+            <li>No analytics or tracking SDKs</li>
+            <li>No advertising frameworks</li>
+            <li>No crash reporting services</li>
+            <li>No user accounts or registration</li>
+            <li>No data shared with third parties</li>
+        </ul>
+
+        <h2>Data Stored on Your Device</h2>
+        <p>The app stores the following locally on your device only:</p>
+        <ul>
+            <li><strong>Indigo API Key</strong> &mdash; stored securely in the iOS Keychain. Used to authenticate with your Indigo server.</li>
+            <li><strong>Reflector ID</strong> &mdash; stored in local app preferences. Used to connect to your Indigo server via the Indigo Reflector service.</li>
+            <li><strong>AI API Key</strong> (optional) &mdash; if you use the voice assistant feature, your AI provider API key is stored in the iOS Keychain.</li>
+            <li><strong>App preferences</strong> &mdash; theme, room layout, voice settings, and other UI preferences stored locally.</li>
+        </ul>
+        <p>All credentials are stored in the iOS Keychain, which provides hardware-backed encryption. No credentials are ever transmitted to anyone other than the services you configure (your Indigo server, and optionally your chosen AI provider).</p>
+
+        <h2>Network Communication</h2>
+        <p>The app communicates directly with:</p>
+        <ul>
+            <li><strong>Your Indigo server</strong> &mdash; via the Indigo Reflector service (encrypted WebSocket connection) or your local network.</li>
+            <li><strong>AI provider</strong> (optional) &mdash; if you enable the voice assistant, voice queries are sent to the AI provider you configure (e.g. OpenAI, Anthropic). These providers have their own privacy policies.</li>
+        </ul>
+        <p>No data is sent to the app developer or any other third party.</p>
+
+        <h2>Microphone &amp; Speech Recognition</h2>
+        <p>If you use the voice assistant feature, the app requests access to your microphone and Apple's on-device speech recognition. Voice audio is processed locally using Apple's Speech framework and is not recorded or stored.</p>
+
+        <h2>Children's Privacy</h2>
+        <p>The app does not knowingly collect any information from children under 13.</p>
+
+        <h2>Changes to This Policy</h2>
+        <p>If this policy changes, the updated version will be posted here with a revised date.</p>
+
+        <h2>Contact</h2>
+        <p>If you have questions about this privacy policy, please <a href="https://github.com/simons-plugins/Home-Remote-for-Indigo/issues">open an issue on GitHub</a>.</p>
+
+        <div class="footer">
+            Home Remote for Indigo is not made by or affiliated with Indigo Domotics.
+        </div>
+    </div>
+</body>
+</html>
