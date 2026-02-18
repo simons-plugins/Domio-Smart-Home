@@ -4,7 +4,7 @@
 # Log API - Exposes Indigo event log as JSON API
 #
 # Endpoints:
-#   GET /message/com.simons-plugins.indigo-log-api/log?lines=500&source=X&search=Y
+#   GET /message/com.simons-plugins.indigo-log-api/log?lines=500&offset=0&source=X&search=Y
 #   GET /message/com.simons-plugins.indigo-log-api/sources
 #
 try:
@@ -30,10 +30,11 @@ class Plugin(indigo.PluginBase):
     # MARK: - HTTP Handlers
 
     def log(self, action, dev=None, caller_waiting_for_result=None):
-        """Return event log entries as JSON.
+        """Return event log entries as JSON with pagination.
 
         Query params:
-            lines  - number of entries (default from plugin config)
+            lines  - number of entries to return (default from plugin config)
+            offset - number of most-recent filtered entries to skip (for pagination)
             source - filter by TypeStr (plugin source name)
             search - text search in Message field
         """
@@ -44,7 +45,7 @@ class Plugin(indigo.PluginBase):
             props = dict(action.props)
             query_args = props.get("url_query_args", {})
 
-            # Parse line count
+            # Parse line count and offset
             default_lines = int(self.pluginPrefs.get("defaultLineCount", 500))
             try:
                 line_count = int(query_args.get("lines", default_lines))
@@ -52,18 +53,31 @@ class Plugin(indigo.PluginBase):
                 line_count = default_lines
             line_count = max(1, min(line_count, 5000))
 
-            # Get log entries
+            try:
+                offset = int(query_args.get("offset", 0))
+            except (ValueError, TypeError):
+                offset = 0
+            offset = max(0, offset)
+
+            # Fetch enough raw entries to cover offset + requested lines.
+            # With filters active, we may need more raw entries than offset + lines
+            # to fill the page, so fetch a generous amount.
+            source_filter = query_args.get("source", "").strip()
+            search_filter = query_args.get("search", "").strip().lower()
+            has_filter = bool(source_filter or search_filter)
+
+            # When filtering, fetch more raw entries to ensure we can fill the page
+            fetch_count = (offset + line_count) * (3 if has_filter else 1)
+            fetch_count = min(fetch_count, 10000)
+
             raw_entries = indigo.server.getEventLogList(
                 returnAsList=True,
                 showTimeStamp=True,
-                lineCount=line_count,
+                lineCount=fetch_count,
             )
 
-            # Build response entries with optional filtering
-            source_filter = query_args.get("source", "").strip()
-            search_filter = query_args.get("search", "").strip().lower()
-
-            entries = []
+            # Build filtered entries list (chronological: oldest first)
+            filtered = []
             for entry in raw_entries:
                 entry_dict = dict(entry)
                 message = entry_dict.get("Message", "")
@@ -71,24 +85,35 @@ class Plugin(indigo.PluginBase):
                 type_val = entry_dict.get("TypeVal", 0)
                 timestamp = entry_dict.get("TimeStamp", "")
 
-                # Apply source filter
                 if source_filter and source != source_filter:
                     continue
-
-                # Apply search filter
                 if search_filter and search_filter not in message.lower():
                     continue
 
-                entries.append({
+                filtered.append({
                     "message": message,
                     "source": source,
                     "typeVal": type_val,
                     "timestamp": str(timestamp),
                 })
 
+            # Apply pagination: skip the most recent `offset` entries,
+            # then return up to `lines` entries from the older end
+            total_filtered = len(filtered)
+            if offset >= total_filtered:
+                entries = []
+            else:
+                end_index = total_filtered - offset
+                start_index = max(0, end_index - line_count)
+                entries = filtered[start_index:end_index]
+
+            has_more = (total_filtered - offset - len(entries)) > 0
+
             result = {
                 "success": True,
                 "count": len(entries),
+                "totalFiltered": total_filtered,
+                "hasMore": has_more,
                 "entries": entries,
             }
 
