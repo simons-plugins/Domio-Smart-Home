@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
     <key>PluginVersion</key>
-    <string>1.0.0</string>
+    <string>2026.0.1</string>
     <key>ServerApiVersion</key>
     <string>3.6</string>
     <key>CFBundleDisplayName</key>
-    <string>Log API</string>
+    <string>LogsOverReflector</string>
     <key>CFBundleIdentifier</key>
-    <string>com.simons-plugins.indigo-log-api</string>
+    <string>com.simons-plugins.logs-over-reflector</string>
     <key>CFBundleVersion</key>
-    <string>1.0.0</string>
+    <string>2026.0.1</string>
 </dict>
 </plist>

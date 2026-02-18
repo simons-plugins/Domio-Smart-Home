@@ -1,11 +1,11 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 ####################
-# Log API - Exposes Indigo event log as JSON API
+# LogsOverReflector - Exposes Indigo event log as JSON API over Reflector
 #
 # Endpoints:
-#   GET /message/com.simons-plugins.indigo-log-api/log?lines=500&offset=0&source=X&search=Y
-#   GET /message/com.simons-plugins.indigo-log-api/sources
+#   GET /message/com.simons-plugins.logs-over-reflector/log?lines=500&offset=0&source=X&search=Y
+#   GET /message/com.simons-plugins.logs-over-reflector/sources
 #
 try:
     import indigo
@@ -22,10 +22,10 @@ class Plugin(indigo.PluginBase):
         self.debug = False
 
     def startup(self):
-        self.logger.info("Log API started")
+        self.logger.info("LogsOverReflector started")
 
     def shutdown(self):
-        self.logger.info("Log API stopped")
+        self.logger.info("LogsOverReflector stopped")
 
     # MARK: - HTTP Handlers
 
