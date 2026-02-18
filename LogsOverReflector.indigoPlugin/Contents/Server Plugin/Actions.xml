@@ -8,4 +8,12 @@
         <Name>log sources</Name>
         <CallbackMethod>sources</CallbackMethod>
     </Action>
+    <Action id="history" uiPath="hidden">
+        <Name>historical log entries</Name>
+        <CallbackMethod>history</CallbackMethod>
+    </Action>
+    <Action id="dates" uiPath="hidden">
+        <Name>available log dates</Name>
+        <CallbackMethod>dates</CallbackMethod>
+    </Action>
 </Actions>
