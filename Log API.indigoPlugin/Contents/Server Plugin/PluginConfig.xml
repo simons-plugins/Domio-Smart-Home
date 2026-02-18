@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<PluginConfig>
+    <Field id="defaultLineCount" type="textfield" defaultValue="500">
+        <Label>Default line count:</Label>
+    </Field>
+</PluginConfig>

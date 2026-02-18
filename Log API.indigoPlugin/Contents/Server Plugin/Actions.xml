@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Actions>
+    <Action id="log" uiPath="hidden">
+        <Name>log entries</Name>
+        <CallbackMethod>log</CallbackMethod>
+    </Action>
+    <Action id="sources" uiPath="hidden">
+        <Name>log sources</Name>
+        <CallbackMethod>sources</CallbackMethod>
+    </Action>
+</Actions>
