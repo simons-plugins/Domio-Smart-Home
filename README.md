@@ -1,8 +1,8 @@
-# Home Remote for Indigo
+# Domio - Smart Home
 
 A modern iOS app for controlling [Indigo](https://www.indigodomo.com/) home automation systems. Real-time device control, voice commands, and Siri integration — all in a Liquid Glass interface designed for iOS 26.
 
-> **Home Remote for Indigo** is an independent, community-built app. It is **not made by or affiliated with Indigo Domotics.**
+> **Domio** is an independent, community-built app. It is **not made by or affiliated with Indigo Domotics.**
 
 ## Device Control
 
@@ -59,9 +59,9 @@ Enter Demo Mode to explore the full app with sample data — no Indigo server re
 
 ## Support
 
-- **App issues** (bugs, crashes, feature requests): [Open an issue](https://github.com/simons-plugins/Home-Remote-for-Indigo/issues)
+- **App issues** (bugs, crashes, feature requests): [Open an issue](https://github.com/simons-plugins/Domio-Smart-Home/issues)
 - **Indigo server/plugin issues** (devices not responding, automation problems, plugin errors): Please visit the [Indigo Domotics Community Forums](https://forums.indigodomo.com/)
 
 ## Privacy
 
-This app does not collect, store, or transmit any personal data. See our [Privacy Policy](https://simons-plugins.github.io/Home-Remote-for-Indigo/privacy.html).
+This app does not collect, store, or transmit any personal data. See our [Privacy Policy](https://simons-plugins.github.io/Domio-Smart-Home/privacy.html).
