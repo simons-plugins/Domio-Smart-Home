@@ -24,6 +24,21 @@ Connected via WebSocket, your devices update the moment they change — whether 
 
 Speak naturally to control your home. "Turn off the kitchen lights" or "What's the temperature in the bedroom?" Powered by your choice of AI provider (OpenAI, Anthropic, or others). You provide your own API key.
 
+## Home Screen Widgets
+
+Keep an eye on your home without opening the app. Four widget types in small and medium sizes:
+
+- **Device Status** (small) — single device with live state
+- **Variable Value** (small) — single variable name and value
+- **Device Grid** (medium) — 2×2 overview of your chosen devices
+- **Device Detail** (medium) — rich single-device view for thermostats, dimmers, and relays
+
+Widgets update automatically in the background. Tap any widget to jump into the app.
+
+## Apple Watch
+
+A WidgetKit complication lets you glance at your home from your watch face.
+
 ## Siri & Shortcuts
 
 Works with Siri out of the box. "Hey Siri, Indigo turn on the porch light" or "Indigo run movie time." Fully integrated with the Shortcuts app for building your own automations.
